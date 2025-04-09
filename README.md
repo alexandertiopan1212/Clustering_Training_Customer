@@ -1,49 +1,94 @@
-# Clustering Training Customer Profiles
+# 🚢 Clustering Marine Training Customers  
+**K-Means from Scratch on ARFM Profiles (Age, Recency, Frequency, Monetary)**  
+_Banten Merchant Marine Polytechnic | Cadet & Alumni Profiles Analysis_
 
-## Project Title
-**Clustering Analysis of Marine Training Customer (Banten Merchant Marine Polytechnic Cadet and Alumnus) Profiles Using Age, Recency, Frequency, and Monetary Method with K-Means Algorithms from Scratch**
+## 📌 Project Overview
 
-## Overview
-This project analyzes marine training customers using clustering based on Age, Recency, Frequency, and Monetary (ARFM) features. K-Means clustering is implemented from scratch to classify customer behavior and purchasing power.
+This project clusters customer profiles of cadets and alumni from **Banten Merchant Marine Polytechnic** based on their training transaction history. By applying the **ARFM method (Age, Recency, Frequency, Monetary)** and clustering them using a **K-Means algorithm built from scratch**, we aim to identify behavioral patterns and segment customers for better strategic decisions.
 
-## Dataset Summary
-- **Source**: customer_profiles.xlsx
+### 🎯 Objectives:
+- Segment customers based on ARFM profiles
+- Discover patterns of training behavior
+- Provide actionable insights for targeted communication and loyalty programs
+
+---
+
+## 📊 Dataset Description
+
+- **Source**: `customer_profiles.xlsx`  
+- **Entries**: 2,300+ customer transactions  
 - **Fields**:
-  - NRT/Kode Pelaut: Unique customer identifier
-  - Tanggal Lahir: Date of birth
-  - Tanggal Transaksi: Transaction date
-  - Diklat: Type of training
-  - Nominal Transaksi: Transaction value
+  - `NRT/Kode Pelaut` (Customer ID)
+  - `Tanggal Lahir` (Date of Birth)
+  - `Tanggal Transaksi` (Transaction Date)
+  - `Diklat` (Training Type)
+  - `Nominal Transaksi` (Transaction Amount)
 
-## ARFM Features
-- **Age**: Calculated at the time of each transaction
-- **Recency**: Days since the latest transaction
-- **Frequency**: Number of training sessions taken
-- **Monetary**: Total spending
+---
 
-## Preprocessing
-- Converted date fields to datetime
-- Calculated Age, Recency, Frequency, and Monetary values
-- Removed outliers using z-score filtering
+## 🧠 Feature Engineering
 
-## Clustering
-- Implemented KMeans algorithm manually
-- Chose optimal number of clusters (3) based on Davies–Bouldin Index (best score: 0.52)
-- Cluster results:
-  - **Cluster 0 (Platinum)**: High frequency & monetary value, average age 24
-  - **Cluster 1 (Gold)**: Moderate frequency & value, slightly younger users
-  - **Cluster 2 (Silver)**: Lower frequency & spending, similar age group
+We derived 4 key features for clustering:
 
-## Visual Insights
-- Histogram plots of Age, Recency, Frequency, and Monetary for all customers
-- Clustering visualization via scatter plot
-- Davies–Bouldin Score plotted for 2-4 clusters
+- **Age**: Age at the time of transaction  
+- **Recency**: Days since last transaction  
+- **Frequency**: Total number of transactions  
+- **Monetary**: Total amount spent
 
-## Recommendations
-- **Personalized Marketing**: Focus on Platinum and Gold clusters for upselling
-- **Loyalty Programs**: Reward most loyal and high-spending customers
-- **Skill Development**: Encourage Silver cluster to join more training
-- **Monitoring**: Regularly update ARFM metrics to adjust strategies
+These features were standardized and outliers were removed prior to clustering.
 
-## Conclusion
-This analysis offers actionable customer segmentation using classical ARFM modeling and clustering from scratch. The outcome helps the campus design more targeted and effective engagement strategies.
+---
+
+## 🛠️ Clustering Method
+
+- **Algorithm**: K-Means (custom implementation from scratch using NumPy)  
+- **Distance Metric**: Euclidean Distance  
+- **Evaluation Metric**: Davies-Bouldin Index (Best score: **K = 3**)
+
+---
+
+## 🧩 Cluster Insights
+
+| Cluster | Label     | Age (avg) | Recency (avg) | Frequency | Monetary (avg) |
+|--------|------------|------------|----------------|------------|----------------|
+| 0      | 🥇 Platinum | 24         | 73 days        | 4 times    | Rp 4.68M       |
+| 1      | 🥈 Gold     | 23         | 95 days        | 3 times    | Rp 3.19M       |
+| 2      | 🥉 Silver   | 24         | 59 days        | 5 times    | Rp 6.12M       |
+
+- **Platinum**: High spenders, moderately frequent  
+- **Gold**: Medium spenders with loyal patterns  
+- **Silver**: High-frequency, high-spending, relatively recent
+
+---
+
+## 📢 Recommendations
+
+1. **Personalized Communication**  
+   Prioritize Cluster 0 and 2 for engagement and upsell strategies.
+
+2. **Loyalty Program**  
+   Reward Cluster 1 customers to increase lifetime value and retention.
+
+3. **Cross-Selling Opportunities**  
+   Use training packages or bundles to encourage Cluster 1 & 2 growth.
+
+4. **Continuous Monitoring**  
+   Run clustering periodically to adapt to behavioral shifts.
+
+---
+
+## 📦 Tech Stack
+
+- Python (Pandas, NumPy, Seaborn, Plotly)
+- Scikit-learn for validation metrics (Davies-Bouldin)
+- Custom K-Means algorithm (no external ML libraries)
+
+---
+
+## ✍️ Author
+
+**Alexander Tiopan**  
+_Senior Business Analyst | Data Enthusiast | Customer Behavior Explorer_  
+📧 alexandertiopan1212@gmail.com  
+📂 Repository: [Clustering_Training_Customer](https://github.com/alexandertiopan1212/Clustering_Training_Customer)
+
